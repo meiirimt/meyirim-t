@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page </title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px 30px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  nav {
+    display: flex;
+    gap: 25px;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+  }
+
+  .burger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    padding: 15px;
+    position: absolute;
+    right: 20px;
+    top: 65px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .mobile-menu a {
+    padding: 10px 0;
+    text-decoration: none;
+    color: #333;
+  }
+
+  .hero {
+    height: 80vh;
+    background: url("https://i.pinimg.com/736x/2c/1a/51/2c1a51e4f44ff455ee82f5bb51cde8dc.jpg") center/cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+    margin: 0;
+  }
+
+  .hero p {
+    font-size: 20px;
+    margin: 10px 0 20px;
+  }
+
+  .hero button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    background: #0077ff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: .3s;
+  }
+
+  .hero button:hover {
+    background: #0058c2;
+  }
+
+  .cards {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .card-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    border-color: #0077ff;
+  }
+
+  .card h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+  .card p {
+    color: #555;
+    flex: 1;
+  }
+
+  footer {
+    background: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+  }
+
+  @media (max-width: 700px) {
+    nav {
+      display: none;
+    }
+
+    .burger {
+      display: block;
+    }
+
+    .mobile-menu.show {
+      display: flex;
+    }
+  }
+
+</style>
+
+<script>
+
+  function toggleMenu() {
+    document.querySelector(".mobile-menu").classList.toggle("show");
+  }
+
+
+  const textQuery = window.matchMedia('(max-width: 800px)');
+
+  function handleTextResize(e) {
+    const heroTitle = document.querySelector('.hero h1');
+    const heroText = document.querySelector('.hero p');
+    const heroButton = document.querySelector('.hero button');
+
+    if (e.matches) {
+      heroTitle.style.fontSize = "24px";
+      heroText.style.fontSize = "14px";
+      heroButton.style.fontSize = "14px";
+      heroButton.style.padding = "10px 20px";
+    } else {
+      heroTitle.style.fontSize = "42px";
+      heroText.style.fontSize = "20px";
+      heroButton.style.fontSize = "18px";
+      heroButton.style.padding = "12px 25px";
+    }
+  }
+
+  textQuery.addListener(handleTextResize); 
+  handleTextResize(textQuery); 
+
+  if (!window.fetch) {
+    alert("Ваш браузер не поддерживает fetch(). Некоторые функции могут работать некорректно.");
+  }
+</script>
+
+</script>
+
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <span style="font-size: 28px;">✨</span>
+    <span>Landing</span>
+  </div>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="burger" onclick="toggleMenu()">☰</div>
+
+  <div class="mobile-menu">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>Welcome to the Landing Page</h1>
+  <p>Using Flexbox and Grid</p>
+  <button>Get Started</button>
+</section>
+
+<section class="cards">
+  <div class="card">
+    <img src="https://i.pinimg.com/736x/bc/08/25/bc0825f21b365811eec9fa69fc2c9b4a.jpg" alt="Card 1">
+    <div class="card-content">
+      <h3>Card 1</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://i.pinimg.com/1200x/22/b2/e7/22b2e748cf45fee836df92d24483396a.jpg" alt="Card 2">
+    <div class="card-content">
+      <h3>Card 2</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://i.pinimg.com/1200x/da/2a/c6/da2ac63916c6d2e666f8d513ade4d5a5.jpg" alt="Card 3">
+    <div class="card-content">
+      <h3>Card 3</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://i.pinimg.com/1200x/da/2a/c6/da2ac63916c6d2e666f8d513ade4d5a5.jpg" alt="Card 4">
+    <div class="card-content">
+      <h3>Card 4</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://i.pinimg.com/1200x/a4/24/db/a424db1bb9f68e14a76494eb651b44ae.jpg" alt="Card 5">
+    <div class="card-content">
+      <h3>Card 5</h3>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://i.pinimg.com/1200x/07/8d/df/078ddf8be5b31cc7307c708b1ec2a680.jpg" alt="Card 6">
+    <div class="card-content">
+      <h3>Card 6</h3>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>©️ 2025 Talgatova Meyirim</p>
+</footer>
+
+</body>
+</html>
